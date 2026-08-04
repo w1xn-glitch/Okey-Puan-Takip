@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Okey Puan Takip</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#121212">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <div id="app">
+        <!-- Oyuncu Giriş Ekranı -->
+        <div id="setup-screen" class="screen active">
+            <div class="logo-container">
+                <div class="app-icon-badge">🀄</div>
+                <h1>Okey Puan Takip</h1>
+                <p>Profesyonel El & Puan Sistemi</p>
+            </div>
+            
+            <div class="player-inputs-container">
+                <h3>Oyuncu İsimleri</h3>
+                <div class="player-inputs">
+                    <div class="input-group">
+                        <span class="input-num">1</span>
+                        <input type="text" id="p0" placeholder="1. Oyuncu Adı" value="Oyuncu 1" autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-num">2</span>
+                        <input type="text" id="p1" placeholder="2. Oyuncu Adı" value="Oyuncu 2" autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-num">3</span>
+                        <input type="text" id="p2" placeholder="3. Oyuncu Adı" value="Oyuncu 3" autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-num">4</span>
+                        <input type="text" id="p3" placeholder="4. Oyuncu Adı" value="Oyuncu 4" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+            <button id="start-btn" class="btn primary-btn">Oyuna Başla 🚀</button>
+        </div>
+
+        <!-- Oyun Ekranı -->
+        <div id="game-screen" class="screen">
+            <header class="game-header">
+                <div class="brand">
+                    <span class="brand-icon">🀄</span>
+                    <h2>Okey Takip</h2>
+                </div>
+                <div class="header-actions">
+                    <button id="undo-btn" class="icon-btn" title="Son Eli Geri Al">
+                        <span>↩️</span>
+                        <small>Geri Al</small>
+                    </button>
+                    <button id="reset-btn" class="icon-btn danger-action" title="Oyunu Sıfırla">
+                        <span>🔄</span>
+                        <small>Sıfırla</small>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Skor Kartları (2x2 Grid) -->
+            <section class="section-block">
+                <div class="score-cards" id="score-cards">
+                    <!-- JavaScript ile doldurulacak -->
+                </div>
+            </section>
+
+            <!-- İşlem Paneli -->
+            <section class="action-panel">
+                <div class="panel-group">
+                    <label>Biten Oyuncu</label>
+                    <div class="winner-select" id="winner-select">
+                        <!-- JavaScript ile doldurulacak -->
+                    </div>
+                </div>
+
+                <div class="panel-group">
+                    <label>Ceza Türü</label>
+                    <div class="penalty-grid" id="penalty-grid">
+                        <button class="penalty-btn active" data-score="4">Normal<strong>-4</strong></button>
+                        <button class="penalty-btn" data-score="8">Okey<strong>-8</strong></button>
+                        <button class="penalty-btn" data-score="8">Çift<strong>-8</strong></button>
+                        <button class="penalty-btn" data-score="16">Çifte Okey<strong>-16</strong></button>
+                        <button class="penalty-btn" data-score="16">İki Okey<strong>-16</strong></button>
+                    </div>
+                </div>
+
+                <button id="apply-btn" class="btn primary-btn apply-action">Puanı Düş ve Kaydet ✨</button>
+            </section>
+
+            <!-- Geçmiş Sekmesi -->
+            <section class="history-container">
+                <div class="history-header">
+                    <h3>El Geçmişi</h3>
+                </div>
+                <div id="history-list">
+                    <p class="no-history">Henüz el oynanmadı.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>
