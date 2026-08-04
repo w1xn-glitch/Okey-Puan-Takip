@@ -6,6 +6,7 @@
     --text-color: #e0e0e0;
     --text-muted: #a0a0a0;
     --danger-color: #cf6679;
+    --danger-glow: rgba(207, 102, 121, 0.2);
     --success-color: #03dac6;
     --border-radius: 16px;
 }
@@ -43,7 +44,7 @@ body {
 .screen {
     display: none;
     flex-direction: column;
-    padding: 20px;
+    padding: 16px;
     width: 100%;
     min-height: 100%;
 }
@@ -55,41 +56,76 @@ body {
 /* Giriş Ekranı */
 .logo-container {
     text-align: center;
-    margin: 40px 0 30px 0;
+    margin: 30px 0 20px 0;
+}
+
+.app-icon-badge {
+    font-size: 3rem;
+    margin-bottom: 10px;
 }
 
 .logo-container h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--accent-color);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .logo-container p {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+}
+
+.player-inputs-container {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 16px;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.player-inputs-container h3 {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
 }
 
 .player-inputs {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
+    gap: 12px;
 }
 
-.player-inputs input {
-    width: 100%;
-    padding: 16px;
-    border-radius: var(--border-radius);
+.input-group {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-color);
     border: 1px solid #333;
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    font-size: 1.1rem;
-    outline: none;
+    border-radius: 12px;
+    padding: 0 12px;
     transition: border-color 0.2s;
 }
 
-.player-inputs input:focus {
+.input-group:focus-within {
     border-color: var(--accent-color);
+}
+
+.input-num {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--text-muted);
+    margin-right: 10px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 0;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
 }
 
 .btn {
@@ -97,7 +133,7 @@ body {
     padding: 16px;
     border-radius: var(--border-radius);
     border: none;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: bold;
     cursor: pointer;
     transition: transform 0.1s, background-color 0.2s;
@@ -113,49 +149,78 @@ body {
     box-shadow: 0 4px 12px var(--accent-glow);
 }
 
-/* Oyun Ekranı */
-header {
+/* Oyun Ekranı Header */
+.game-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    background: var(--card-bg);
+    padding: 12px 16px;
+    border-radius: var(--border-radius);
+    border: 1px solid #333;
 }
 
-header h2 {
-    font-size: 1.4rem;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-icon {
+    font-size: 1.2rem;
+}
+
+.game-header h2 {
+    font-size: 1.2rem;
     color: var(--accent-color);
 }
 
 .header-actions {
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
-.icon-btn {
-    background: var(--card-bg);
+/* DÜZELTİLEN BUTONLAR (Taşma Yapmaz) */
+.action-pill-btn {
+    background: var(--bg-color);
     border: 1px solid #333;
     color: var(--text-color);
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    font-size: 1.2rem;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 5px;
+    transition: background-color 0.2s;
+}
+
+.action-pill-btn:active {
+    transform: scale(0.95);
+}
+
+.action-pill-btn.danger-action {
+    color: var(--danger-color);
+    border-color: rgba(207, 102, 121, 0.3);
+}
+
+/* Skor Kartları */
+.section-block {
+    margin-bottom: 16px;
 }
 
 .score-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 10px;
 }
 
 .score-card {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 14px;
+    padding: 12px;
     border: 1px solid #333;
     display: flex;
     flex-direction: column;
@@ -170,16 +235,16 @@ header h2 {
 }
 
 .score-card .p-name {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .score-card .p-score {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: bold;
     color: var(--text-color);
 }
@@ -192,15 +257,20 @@ header h2 {
 .action-panel {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 16px;
+    padding: 14px;
     border: 1px solid #333;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
-.action-panel h3 {
-    font-size: 0.9rem;
+.panel-group {
+    margin-bottom: 12px;
+}
+
+.action-panel label {
+    display: block;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -208,17 +278,16 @@ header h2 {
 .winner-select {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 6px;
 }
 
 .winner-btn {
     background: var(--bg-color);
     border: 1px solid #333;
     color: var(--text-color);
-    padding: 10px 4px;
-    border-radius: 10px;
-    font-size: 0.85rem;
+    padding: 8px 2px;
+    border-radius: 8px;
+    font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
     text-align: center;
@@ -236,27 +305,27 @@ header h2 {
 .penalty-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 6px;
+    margin-bottom: 12px;
 }
 
 .penalty-btn {
     background: var(--bg-color);
     border: 1px solid #333;
     color: var(--text-color);
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 0.85rem;
+    padding: 8px 4px;
+    border-radius: 8px;
+    font-size: 0.8rem;
     cursor: pointer;
     text-align: center;
     font-weight: 600;
 }
 
-.penalty-btn span {
+.penalty-btn strong {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-muted);
-    margin-top: 2px;
+    margin-top: 1px;
 }
 
 .penalty-btn.active {
@@ -265,31 +334,36 @@ header h2 {
     border-color: var(--accent-color);
 }
 
-.penalty-btn.active span {
+.penalty-btn.active strong {
     color: #333;
 }
 
-/* Geçmiş Listesi */
+.apply-action {
+    padding: 14px;
+    font-size: 1rem;
+}
+
+/* Geçmiş Sekmesi */
 .history-container {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 16px;
+    padding: 14px;
     border: 1px solid #333;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-.history-container h3 {
-    font-size: 0.9rem;
+.history-header h3 {
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     text-transform: uppercase;
 }
 
 #history-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    max-height: 180px;
+    gap: 6px;
+    max-height: 140px;
     overflow-y: auto;
 }
 
@@ -298,15 +372,15 @@ header h2 {
     justify-content: space-between;
     align-items: center;
     background: var(--bg-color);
-    padding: 10px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
     border: 1px solid #222;
 }
 
 .no-history {
     color: var(--text-muted);
     text-align: center;
-    font-size: 0.85rem;
-    padding: 10px;
+    font-size: 0.8rem;
+    padding: 8px;
 }
