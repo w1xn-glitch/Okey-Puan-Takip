@@ -15,9 +15,9 @@
     <div id="app">
         <!-- Oyuncu Giriş Ekranı -->
         <div id="setup-screen" class="screen active">
-            <div class="logo-container">
-                <div class="app-icon-badge">🀄</div>
-                <h1>Okey Puan Takip</h1>
+         <div class="logo-container">
+    <img src="logo.png" alt="Logo" class="custom-logo">
+                <h1>Okey Puan Defteri</h1>
                 <p>Profesyonel El & Puan Sistemi</p>
             </div>
             
@@ -25,19 +25,19 @@
                 <h3>Oyuncu İsimleri</h3>
                 <div class="player-inputs">
                     <div class="input-group">
-                        <span class="input-num">1</span>
+                        <span class="input-num">--------------------------------------------------------------------</span>
                         <input type="text" id="p0" placeholder="1. Oyuncu Adı" value="" autocomplete="off">
                     </div>
                     <div class="input-group">
-                        <span class="input-num">2</span>
+                        <span class="input-num">--------------------------------------------------------------------</span>
                         <input type="text" id="p1" placeholder="2. Oyuncu Adı" value="" autocomplete="off">
                     </div>
                     <div class="input-group">
-                        <span class="input-num">3</span>
+                        <span class="input-num">--------------------------------------------------------------------</span>
                         <input type="text" id="p2" placeholder="3. Oyuncu Adı" value="" autocomplete="off">
                     </div>
                     <div class="input-group">
-                        <span class="input-num">4</span>
+                        <span class="input-num">--------------------------------------------------------------------</span>
                         <input type="text" id="p3" placeholder="4. Oyuncu Adı" value="" autocomplete="off">
                     </div>
                 </div>
@@ -49,18 +49,20 @@
         <!-- Oyun Ekranı -->
         <div id="game-screen" class="screen">
             <header class="game-header">
-                <div class="brand">
-                    <span class="brand-icon">🀄</span>
-                    <h2>Okey Takip</h2>
+              <div class="logo-container">
+    <img src="logo.png" alt="Logo" class="custom-logo">
+                    <h2>Okey Takip Defteri</h2>
                 </div>
-                <div class="header-actions">
-                    <button id="undo-btn" class="action-pill-btn" title="Son Eli Geri Al">
-                        <span>↩️</span> Geri Al
-                    </button>
-                    <button id="reset-btn" class="action-pill-btn danger-action" title="Oyunu Sıfırla">
-                        <span>🔄</span> Sıfırla
-                    </button>
-                </div>
+             <div class="header-actions">
+    <button id="undo-btn" class="icon-btn" title="Son Eli Geri Al">
+        <span class="btn-icon">↩️</span>
+        <span class="btn-text">Geri Al</span>
+    </button>
+    <button id="reset-btn" class="icon-btn danger-action" title="Oyunu Sıfırla">
+        <span class="btn-icon">🔄</span>
+        <span class="btn-text">Yeni Oyun</span>
+    </button>
+</div>
             </header>
 
             <!-- Skor Kartları (2x2 Grid) -->
