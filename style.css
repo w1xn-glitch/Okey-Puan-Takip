@@ -6,7 +6,6 @@
     --text-color: #e0e0e0;
     --text-muted: #a0a0a0;
     --danger-color: #cf6679;
-    --danger-glow: rgba(207, 102, 121, 0.2);
     --success-color: #03dac6;
     --border-radius: 16px;
 }
@@ -44,7 +43,7 @@ body {
 .screen {
     display: none;
     flex-direction: column;
-    padding: 16px;
+    padding: 20px;
     width: 100%;
     min-height: 100%;
 }
@@ -55,77 +54,51 @@ body {
 
 /* Giriş Ekranı */
 .logo-container {
-    text-align: center;
-    margin: 30px 0 20px 0;
-}
-
-.app-icon-badge {
-    font-size: 3rem;
-    margin-bottom: 10px;
+    display: flex;          /* Logo ve yazıyı yan yana getirir */
+    align-items: center;    /* Dikeyde tam ortalar */
+    justify-content: center;/* Yatayda ortaya hizalar (İstiyorsan sola dayamak için 'flex-start' yapabilirsin) */
+    gap: 12px;              /* Logo ile yazı arasındaki boşluk */
+    margin: 40px 0 30px 0;
 }
 
 .logo-container h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--accent-color);
-    margin-bottom: 6px;
+    margin-bottom: 0;       /* Alttaki eski boşluğu sıfırladık çünkü yan yana geldiler */
+}
+
+.custom-logo {
+    width: 42px;            /* Logonun genişliği (istediğin gibi büyütebilirsin) */
+    height: auto;           /* Oranı bozulmasın diye */
+    display: block;         
 }
 
 .logo-container p {
     color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-.player-inputs-container {
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: 16px;
-    border: 1px solid #333;
-    margin-bottom: 20px;
-}
-
-.player-inputs-container h3 {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
+    font-size: 0.95rem;
 }
 
 .player-inputs {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
+    margin-bottom: 30px;
 }
 
-.input-group {
-    display: flex;
-    align-items: center;
-    background-color: var(--bg-color);
+.player-inputs input {
+    width: 100%;
+    padding: 16px;
+    border-radius: var(--border-radius);
     border: 1px solid #333;
-    border-radius: 12px;
-    padding: 0 12px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1.1rem;
+    outline: none;
     transition: border-color 0.2s;
 }
 
-.input-group:focus-within {
+.player-inputs input:focus {
     border-color: var(--accent-color);
-}
-
-.input-num {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: var(--text-muted);
-    margin-right: 10px;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 14px 0;
-    border: none;
-    background: transparent;
-    color: var(--text-color);
-    font-size: 1rem;
-    outline: none;
 }
 
 .btn {
@@ -133,7 +106,7 @@ body {
     padding: 16px;
     border-radius: var(--border-radius);
     border: none;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
     transition: transform 0.1s, background-color 0.2s;
@@ -149,78 +122,79 @@ body {
     box-shadow: 0 4px 12px var(--accent-glow);
 }
 
-/* Oyun Ekranı Header */
-.game-header {
+/* Oyun Ekranı */
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
-    background: var(--card-bg);
-    padding: 12px 16px;
-    border-radius: var(--border-radius);
-    border: 1px solid #333;
+    margin-bottom: 20px;
 }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.brand-icon {
-    font-size: 1.2rem;
-}
-
-.game-header h2 {
-    font-size: 1.2rem;
+header h2 {
+    font-size: 1.4rem;
     color: var(--accent-color);
 }
 
 .header-actions {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
-/* DÜZELTİLEN BUTONLAR (Taşma Yapmaz) */
-.action-pill-btn {
-    background: var(--bg-color);
+/* Mevcut .icon-btn tanımını bununla değiştiriyoruz */
+.icon-btn {
+    background: var(--card-bg);
     border: 1px solid #333;
     color: var(--text-color);
-    padding: 6px 12px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    padding: 0 12px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 0.9rem;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 5px;
-    transition: background-color 0.2s;
+    gap: 6px;
+    transition: all 0.2s ease;
 }
 
-.action-pill-btn:active {
-    transform: scale(0.95);
+.icon-btn .btn-icon {
+    font-size: 1rem;
+    line-height: 1;
+    transition: transform 0.2s ease;
 }
 
-.action-pill-btn.danger-action {
+.icon-btn .btn-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Hover ve Etkileşim Efektleri */
+.icon-btn:hover {
+    border-color: var(--accent-color);
+    background-color: rgba(187, 134, 252, 0.08);
+}
+
+.icon-btn:hover .btn-icon {
+    transform: scale(1.1);
+}
+
+/* Sıfırla butonu için özel tehlike/kırmızı hover teması */
+#reset-btn.danger-action:hover {
+    border-color: var(--danger-color);
+    background-color: rgba(207, 102, 121, 0.08);
     color: var(--danger-color);
-    border-color: rgba(207, 102, 121, 0.3);
-}
-
-/* Skor Kartları */
-.section-block {
-    margin-bottom: 16px;
 }
 
 .score-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .score-card {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 12px;
+    padding: 14px;
     border: 1px solid #333;
     display: flex;
     flex-direction: column;
@@ -235,16 +209,16 @@ body {
 }
 
 .score-card .p-name {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .score-card .p-score {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: var(--text-color);
 }
@@ -257,20 +231,15 @@ body {
 .action-panel {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 14px;
+    padding: 16px;
     border: 1px solid #333;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
-.panel-group {
-    margin-bottom: 12px;
-}
-
-.action-panel label {
-    display: block;
-    font-size: 0.8rem;
+.action-panel h3 {
+    font-size: 0.9rem;
     color: var(--text-muted);
-    margin-bottom: 6px;
+    margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -278,16 +247,17 @@ body {
 .winner-select {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
 .winner-btn {
     background: var(--bg-color);
     border: 1px solid #333;
     color: var(--text-color);
-    padding: 8px 2px;
-    border-radius: 8px;
-    font-size: 0.75rem;
+    padding: 10px 4px;
+    border-radius: 10px;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
     text-align: center;
@@ -305,27 +275,27 @@ body {
 .penalty-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    margin-bottom: 12px;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
 .penalty-btn {
     background: var(--bg-color);
     border: 1px solid #333;
     color: var(--text-color);
-    padding: 8px 4px;
-    border-radius: 8px;
-    font-size: 0.8rem;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.85rem;
     cursor: pointer;
     text-align: center;
     font-weight: 600;
 }
 
-.penalty-btn strong {
+.penalty-btn span {
     display: block;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
-    margin-top: 1px;
+    margin-top: 2px;
 }
 
 .penalty-btn.active {
@@ -334,36 +304,31 @@ body {
     border-color: var(--accent-color);
 }
 
-.penalty-btn.active strong {
+.penalty-btn.active span {
     color: #333;
 }
 
-.apply-action {
-    padding: 14px;
-    font-size: 1rem;
-}
-
-/* Geçmiş Sekmesi */
+/* Geçmiş Listesi */
 .history-container {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
-    padding: 14px;
+    padding: 16px;
     border: 1px solid #333;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-.history-header h3 {
-    font-size: 0.8rem;
+.history-container h3 {
+    font-size: 0.9rem;
     color: var(--text-muted);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     text-transform: uppercase;
 }
 
 #history-list {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    max-height: 140px;
+    gap: 8px;
+    max-height: 180px;
     overflow-y: auto;
 }
 
@@ -372,15 +337,15 @@ body {
     justify-content: space-between;
     align-items: center;
     background: var(--bg-color);
-    padding: 8px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
     border: 1px solid #222;
 }
 
 .no-history {
     color: var(--text-muted);
     text-align: center;
-    font-size: 0.8rem;
-    padding: 8px;
+    font-size: 0.85rem;
+    padding: 10px;
 }
