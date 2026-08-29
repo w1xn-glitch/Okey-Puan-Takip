@@ -54,11 +54,17 @@ body {
 
 /* Giriş Ekranı */
 .logo-container {
-    display: flex;          /* Logo ve yazıyı yan yana getirir */
-    align-items: center;    /* Dikeyde tam ortalar */
-    justify-content: center;/* Yatayda ortaya hizalar (İstiyorsan sola dayamak için 'flex-start' yapabilirsin) */
-    gap: 12px;              /* Logo ile yazı arasındaki boşluk */
-    margin: 40px 0 30px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.brand-logo {
+    width: 42px;         /* Genişliği sabitliyoruz (İstiyorsan 38px ya da 48px yapabilirsin) */
+    height: 42px;        /* Yüksekliği de aynı veriyoruz ki kare/düzgün dursun */
+    object-fit: contain; /* Fotoğrafın oranı bozulmasın, içine sığsın */
+    border-radius: 10px; /* İstersen köşelerini hafif yumuşatır, çok şık durur */
 }
 
 .logo-container h1 {
