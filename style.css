@@ -56,34 +56,30 @@ body {
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 0;
+    gap: 12px;
+    margin: 40px 0 30px 0;
 }
 
-/* Giriş Ekranındaki Büyük Başlık İçin */
 .logo-container h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--accent-color);
     margin: 0;
-}
-
-/* Logonun Boyut Ayarı (Bunu kesin ekle, devasa olmasını bu engeller) */
-.brand-logo {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    border-radius: 10px;
-    display: block;
-}
-.custom-logo {
-    width: 42px;            /* Logonun genişliği (istediğin gibi büyütebilirsin) */
-    height: auto;           /* Oranı bozulmasın diye */
-    display: block;         
 }
 
 .logo-container p {
     color: var(--text-muted);
     font-size: 0.95rem;
+}
+
+/* Tüm Sayfalardaki Logolar İçin Ortak Sabit Boyut */
+.brand-logo, .custom-logo {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    object-fit: contain !important;
+    border-radius: 10px;
+    display: block !important;
 }
 
 .player-inputs {
@@ -130,13 +126,18 @@ body {
     box-shadow: 0 4px 12px var(--accent-glow);
 }
 
-/* Oyun Ekranı */
+/* Oyun Ekranı Header Düzeni */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
     width: 100%;
+}
+
+header .logo-container {
+    margin: 0;
+    gap: 10px;
 }
 
 header h2 {
@@ -148,10 +149,11 @@ header h2 {
 
 .header-actions {
     display: flex;
-    gap: 10px;
+    gap: 8px;
+    align-items: center;
 }
 
-/* Mevcut .icon-btn tanımını bununla değiştiriyoruz */
+/* Buton Tasarımları */
 .icon-btn {
     background: var(--card-bg);
     border: 1px solid #333;
@@ -178,7 +180,6 @@ header h2 {
     font-weight: 600;
 }
 
-/* Hover ve Etkileşim Efektleri */
 .icon-btn:hover {
     border-color: var(--accent-color);
     background-color: rgba(187, 134, 252, 0.08);
@@ -188,7 +189,6 @@ header h2 {
     transform: scale(1.1);
 }
 
-/* Sıfırla butonu için özel tehlike/kırmızı hover teması */
 #reset-btn.danger-action:hover {
     border-color: var(--danger-color);
     background-color: rgba(207, 102, 121, 0.08);
@@ -284,10 +284,10 @@ header h2 {
 }
 
 .penalty-grid {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
     margin-bottom: 16px;
+    display: grid;
 }
 
 .penalty-btn {
