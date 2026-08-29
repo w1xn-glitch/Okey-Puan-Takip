@@ -56,23 +56,25 @@ body {
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin: 20px 0;
+    gap: 10px;
+    margin: 0;
 }
 
-.brand-logo {
-    width: 42px;         /* Genişliği sabitliyoruz (İstiyorsan 38px ya da 48px yapabilirsin) */
-    height: 42px;        /* Yüksekliği de aynı veriyoruz ki kare/düzgün dursun */
-    object-fit: contain; /* Fotoğrafın oranı bozulmasın, içine sığsın */
-    border-radius: 10px; /* İstersen köşelerini hafif yumuşatır, çok şık durur */
-}
-
+/* Giriş Ekranındaki Büyük Başlık İçin */
 .logo-container h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--accent-color);
-    margin-bottom: 0;       /* Alttaki eski boşluğu sıfırladık çünkü yan yana geldiler */
+    margin: 0;
 }
 
+/* Logonun Boyut Ayarı (Bunu kesin ekle, devasa olmasını bu engeller) */
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 10px;
+    display: block;
+}
 .custom-logo {
     width: 42px;            /* Logonun genişliği (istediğin gibi büyütebilirsin) */
     height: auto;           /* Oranı bozulmasın diye */
@@ -134,11 +136,14 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 header h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: var(--accent-color);
+    margin: 0;
+    white-space: nowrap;
 }
 
 .header-actions {
